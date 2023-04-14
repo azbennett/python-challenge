@@ -4,7 +4,7 @@ import csv
 import os
 
 #CSV file containing our data
-file = 'Resources/election_data.csv'
+file = os.path.join('Resources', 'election_data.csv')
 
 candidate = ["Charles Casper Stockham", "Diana DeGette", "Raymon Anthony Doane"] #clean list for ouput
 totalvotes = 0              #ensures we have clean start of no votes
@@ -52,7 +52,8 @@ print(f'Winner: {winner}')
 print('-----------------------------------------------------')
 
 #I will also output the same details to a text file:
-with open('analysis/output.txt', 'w') as f:
+outputpath = os.path.join('analysis', 'output.txt')
+with open(outputpath, 'w') as f:
     f.write('Election Results\n')
     f.write('-----------------------------------------------------\n')
     f.write(f'Total Votes: {totalvotes}\n')

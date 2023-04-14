@@ -5,7 +5,7 @@ import os
 import sys
 
 #CSV file containing our data
-file = 'Resources/budget_data.csv'
+file = os.path.join('Resources', 'budget_data.csv')
 
 greatestinc = 0     #tracker for greatest increase in profits
 greatestdec = 0     #tracker for greatest decrease in profits
@@ -62,7 +62,8 @@ print(f'Greatest Increase in Profits: {greatestincdate} (${greatestinc})')
 print(f'Greatest Decrease in Profits: {greatestdecdate} (${greatestdec})')
 
 #I will also output the same details to a text file:
-with open('analysis/output.txt', 'w') as f:
+outputpath = os.path.join('analysis', 'output.txt')
+with open(outputpath, 'w') as f:
     f.write('Financial Analysis\n')
     f.write('-----------------------------------------------------\n')
     f.write(f'Total Months: {months}\n')

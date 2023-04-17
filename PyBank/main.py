@@ -2,7 +2,6 @@
 #Python Bank Assigment
 import csv
 import os
-import sys
 import statistics
 
 #CSV file containing our data

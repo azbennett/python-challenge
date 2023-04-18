@@ -12,7 +12,6 @@ greatestdec = 0         #tracker for greatest decrease in profits
 totalprofitlosses = 0   #tracker for total profits
 month_counter = 0       #tracker for total months
 average = 0             #tracker for average change 
-skipfirst = 1           #lets me enter my first loop to store previousval
 totaldifferences = 0    #used for calculating average
 difference = []         #list for storing the difference values as we go through the loops
 previousval = 0         #used for old value and new value for change/difference
@@ -28,28 +27,25 @@ with open(file, 'r') as csvfile:
     for row in budget: 
         totalprofitlosses = totalprofitlosses + int(row[1])
         month_counter = month_counter + 1
-        
+
         #first loop stores the first value as old, but does not calculate differences since we have no old value to compare to
-        if skipfirst == 1: 
+        if month_counter == 1:
             previousval = int(row[1])
-            skipfirst = 0
         #all other loops we store  new vs old for change/difference
         else:
             currentval = int(row[1])
             changeval = currentval - previousval
             difference.append(changeval)
             previousval = int(row[1])
+
         #check for  greatest inc / dec
         if  changeval > greatestinc:
             greatestinc = changeval
-            greatestincdate = row[0]
-        if  changeval < greatestdec:
+            greatestincdate = row[0]    
+        elif  changeval < greatestdec:
             greatestdec = changeval
             greatestdecdate = row[0]
 
-    #calculates the average change values
-    for i in difference:
-        totaldifferences = totaldifferences + i
     average = round(statistics.mean(difference),2) #total of difference[] list divided by 85 (length of the list)
 
 #on screen output

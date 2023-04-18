@@ -18,11 +18,11 @@ with open(file, 'r') as csvfile:
     
     for row in votes:       #primary loop counting total votes + individual candidate votes
         totalvotes += 1
-        if row[2] == candidate[0]:
+        if row[2] == candidate[0]:                  #if the vote was for Chuck +1 to the counter
             percent_name[0] = percent_name[0] + 1
-        elif row[2] == candidate[1]:
+        elif row[2] == candidate[1]:                #if the vote was for Diana +1 
             percent_name[1] = percent_name[1] + 1
-        elif row[2] == candidate[2]:
+        elif row[2] == candidate[2]:                #if the vote was for Raymon +1 
             percent_name[2] = percent_name[2] + 1
 
 #if charles > diana and charles > raymon
